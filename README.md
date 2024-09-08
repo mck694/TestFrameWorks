@@ -84,7 +84,7 @@ Code -> Copy URL
 
 Open Terminal
 
-cd ..
+	cd ..
 
 	git clone "https://github.com"
 If it gives error, already exists or its not empty directory
