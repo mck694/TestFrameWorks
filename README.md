@@ -10,22 +10,21 @@ Name it as MaccoValidator
 In that Create a New Swift File, Validator.swift
 
 
-import Foundation
+	import Foundation
 
-public struct Validator {
+	public struct Validator {
 
-    public static func validEmail(_ email: String) -> Bool {
+    	public static func validEmail(_ email: String) -> Bool {
 
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
-    }
+    	}
     
     public static func sayHello() {
-
         print("Hello pretty lady. How are you doing????")
-    }
-}
+    	  }
+	}
 
 // We are making it public so that it can be accessed outside the module
 
@@ -52,10 +51,10 @@ Then in your project
 import MaccoValidator
 
 
-import UIKit
-import MaccoValidator
+	import UIKit
+	import MaccoValidator
 
-class ViewController: UIViewController {
+	class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +66,7 @@ class ViewController: UIViewController {
     }
 
 
-}
+	}
 
 Now let's deploy/publish our SDK
 
@@ -87,30 +86,32 @@ Open Terminal
 
 cd ..
 
-git clone "https://github.com"
+	git clone "https://github.com"
 If it gives error, already exists or its not empty directory
 Change your folder name,
 Add that project folder in your Git Created Folder -> To have example project
 
 then terminal 
-git cd MaccoValidator
-git add . 
-git commit -m "Add Framework"
-git push origin master  // now it's online
+	
+ 	git cd MaccoValidator
+	git add . 
+	git commit -m "Add Framework"
+	git push origin master  // now it's online
 
 let's create a tag
 
-git tag 1.0.0
+	git tag 1.0.0
 
-git push origin --tags
+	git push origin --tags
 
 Now let's create podspec
 
-pod spec create MaccoValidator
+	pod spec create MaccoValidator
 
  - let's open podspec
 
-open MaccoValidator.podspec -a xcode
+	
+ 		open MaccoValidator.podspec -a xcode
 
 Add like this 
 Pod::Spec.new do |spec|
@@ -131,22 +132,23 @@ end
 
 After editing this run
 
-pod spec lint
+	pod spec lint
 
-pod spec lint --allowwarnings // if you didnt have license
+	pod spec lint --allowwarnings // if you didnt have license
 
 SO Now Create New Project to test
 
-pod init
-open podfile -a xcode
+	pod init
+	open podfile -a xcode
 
-pod 'MaccoValidator', :path => '../MaccoValidator'
+	pod 'MaccoValidator', :path => '../MaccoValidator'
 
 to work move
 MaccoValidator.podspec to MaccoValidator Folder
 
 now run 
-pod install
+
+	pod install
 
 it's working
 
@@ -154,22 +156,23 @@ let's publish online in cocoapods
 
 So let's create pod session
 
-pod trunk me
+	pod trunk me
 to work this, we need to register
-pod trunk register
+
+	pod trunk register
 
 then push to cocoapods
 now go to where the MaccoValidator folder is
 
-pod trunk push MaccoValidator.podspec
+	pod trunk push MaccoValidator.podspec
 
 If everything is fine, now our pod is published 
 
 So now push to git
 
-git add .
-git commit -m "add podspec"
-git push origin master
+	git add .
+	git commit -m "add podspec"
+	git push origin master
 
 Now check our pod in Cocoapods site
 
@@ -177,10 +180,10 @@ So now in new project
 
 add
 
-pod 'MaccoValidator'
+	pod 'MaccoValidator'
 
-pod repo update
-pod install 
+	pod repo update
+	pod install 
 
 Now check it, It works fine
 
